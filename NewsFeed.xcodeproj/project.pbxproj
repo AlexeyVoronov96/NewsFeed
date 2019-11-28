@@ -9,21 +9,35 @@
 /* Begin PBXBuildFile section */
 		ABB357DD239012470065CBEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB357DC239012470065CBEA /* AppDelegate.swift */; };
 		ABB357DF239012470065CBEA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB357DE239012470065CBEA /* SceneDelegate.swift */; };
-		ABB357E1239012470065CBEA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB357E0239012470065CBEA /* ViewController.swift */; };
 		ABB357E7239012470065CBEA /* NewsFeed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ABB357E5239012470065CBEA /* NewsFeed.xcdatamodeld */; };
 		ABB357E9239012570065CBEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABB357E8239012570065CBEA /* Assets.xcassets */; };
 		ABB357EC239012570065CBEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABB357EA239012570065CBEA /* LaunchScreen.storyboard */; };
+		ABB357F4239016130065CBEA /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB357F3239016130065CBEA /* FeedViewController.swift */; };
+		ABB357F6239016340065CBEA /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB357F5239016340065CBEA /* ArticleCell.swift */; };
+		ABB357FB23901F660065CBEA /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB357FA23901F660065CBEA /* Settings.swift */; };
+		ABB35800239020380065CBEA /* NetworkWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB357FF239020380065CBEA /* NetworkWorker.swift */; };
+		ABB35802239020490065CBEA /* NetworkWorkerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB35801239020490065CBEA /* NetworkWorkerProtocol.swift */; };
+		ABB35805239020C50065CBEA /* EndpointProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB35804239020C50065CBEA /* EndpointProtocol.swift */; };
+		ABB35807239020D00065CBEA /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB35806239020D00065CBEA /* Feed.swift */; };
+		ABB35809239022940065CBEA /* NetworkWorkerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB35808239022940065CBEA /* NetworkWorkerErrors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		ABB357D9239012470065CBEA /* NewsFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABB357DC239012470065CBEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABB357DE239012470065CBEA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ABB357E0239012470065CBEA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ABB357E6239012470065CBEA /* NewsFeed.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NewsFeed.xcdatamodel; sourceTree = "<group>"; };
 		ABB357E8239012570065CBEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABB357EB239012570065CBEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ABB357ED239012570065CBEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABB357F3239016130065CBEA /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		ABB357F5239016340065CBEA /* ArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
+		ABB357FA23901F660065CBEA /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		ABB357FF239020380065CBEA /* NetworkWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkWorker.swift; sourceTree = "<group>"; };
+		ABB35801239020490065CBEA /* NetworkWorkerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkWorkerProtocol.swift; sourceTree = "<group>"; };
+		ABB35804239020C50065CBEA /* EndpointProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointProtocol.swift; sourceTree = "<group>"; };
+		ABB35806239020D00065CBEA /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
+		ABB35808239022940065CBEA /* NetworkWorkerErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkWorkerErrors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +70,78 @@
 		ABB357DB239012470065CBEA /* NewsFeed */ = {
 			isa = PBXGroup;
 			children = (
+				ABB357FC23901FB00065CBEA /* Network */,
+				ABB357FD23901FBA0065CBEA /* LocalMemory */,
+				ABB357FE23901FCF0065CBEA /* Models */,
+				ABB357F923901F530065CBEA /* Tools */,
+				ABB357F723901F350065CBEA /* UI */,
 				ABB357DC239012470065CBEA /* AppDelegate.swift */,
 				ABB357DE239012470065CBEA /* SceneDelegate.swift */,
-				ABB357E0239012470065CBEA /* ViewController.swift */,
 				ABB357E8239012570065CBEA /* Assets.xcassets */,
 				ABB357EA239012570065CBEA /* LaunchScreen.storyboard */,
 				ABB357ED239012570065CBEA /* Info.plist */,
 				ABB357E5239012470065CBEA /* NewsFeed.xcdatamodeld */,
 			);
 			path = NewsFeed;
+			sourceTree = "<group>";
+		};
+		ABB357F723901F350065CBEA /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				ABB357F823901F400065CBEA /* FeedViewController */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		ABB357F823901F400065CBEA /* FeedViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ABB357F5239016340065CBEA /* ArticleCell.swift */,
+				ABB357F3239016130065CBEA /* FeedViewController.swift */,
+			);
+			path = FeedViewController;
+			sourceTree = "<group>";
+		};
+		ABB357F923901F530065CBEA /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				ABB357FA23901F660065CBEA /* Settings.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		ABB357FC23901FB00065CBEA /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				ABB35803239020A20065CBEA /* Endpoints */,
+				ABB357FF239020380065CBEA /* NetworkWorker.swift */,
+				ABB35801239020490065CBEA /* NetworkWorkerProtocol.swift */,
+				ABB35808239022940065CBEA /* NetworkWorkerErrors.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		ABB357FD23901FBA0065CBEA /* LocalMemory */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LocalMemory;
+			sourceTree = "<group>";
+		};
+		ABB357FE23901FCF0065CBEA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ABB35803239020A20065CBEA /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				ABB35804239020C50065CBEA /* EndpointProtocol.swift */,
+				ABB35806239020D00065CBEA /* Feed.swift */,
+			);
+			path = Endpoints;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +214,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABB357E1239012470065CBEA /* ViewController.swift in Sources */,
+				ABB357FB23901F660065CBEA /* Settings.swift in Sources */,
+				ABB35807239020D00065CBEA /* Feed.swift in Sources */,
 				ABB357DD239012470065CBEA /* AppDelegate.swift in Sources */,
+				ABB35809239022940065CBEA /* NetworkWorkerErrors.swift in Sources */,
 				ABB357E7239012470065CBEA /* NewsFeed.xcdatamodeld in Sources */,
+				ABB35805239020C50065CBEA /* EndpointProtocol.swift in Sources */,
+				ABB357F4239016130065CBEA /* FeedViewController.swift in Sources */,
+				ABB35802239020490065CBEA /* NetworkWorkerProtocol.swift in Sources */,
+				ABB35800239020380065CBEA /* NetworkWorker.swift in Sources */,
+				ABB357F6239016340065CBEA /* ArticleCell.swift in Sources */,
 				ABB357DF239012470065CBEA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
