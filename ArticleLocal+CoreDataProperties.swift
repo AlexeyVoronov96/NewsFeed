@@ -19,5 +19,6 @@ extension ArticleLocal {
     @NSManaged public var title: String?
     @NSManaged public var subTitle: String?
     @NSManaged public var imageLink: String?
+    @NSManaged public var articleLink: String?
     @NSManaged public var publishedAt: Date?
 }

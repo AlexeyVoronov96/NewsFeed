@@ -7,6 +7,7 @@
 //
 
 import CoreData
+import SafariServices
 import UIKit
 
 class FeedViewController: UIViewController {
@@ -125,6 +126,13 @@ extension FeedViewController: UITableViewDataSource {
 extension FeedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        guard let articleURL = URL(string: localArticles[indexPath.row].articleLink ?? "") else {
+            return
+        }
+        
+        let safariViewController = SFSafariViewController(url: articleURL)
+        present(safariViewController, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

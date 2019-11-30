@@ -18,6 +18,7 @@ public class ArticleLocal: NSManagedObject {
         localArticle.title = article.title
         localArticle.subTitle = article.description
         localArticle.imageLink = article.urlToImage
+        localArticle.articleLink = article.url
         localArticle.publishedAt = article.publishedAt
     }
 }
