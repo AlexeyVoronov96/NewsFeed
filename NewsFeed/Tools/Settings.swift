@@ -9,5 +9,5 @@
 import Foundation
 
 class Settings {
-    static let apiKey = "a32e39517ac94ab0bc30c1f0c6da7511"
+    static let apiKey = "d0efe00d5b3944cab0f9079c0253c35c"
 }

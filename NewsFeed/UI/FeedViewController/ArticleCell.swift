@@ -12,10 +12,18 @@ class ArticleCell: UITableViewCell {
     static let cellId = String(describing: self)
     
     private let articleImageView: WebImageView = {
-        let imageView = WebImageView()
+        let imageView = WebImageView(frame: .zero)
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
+    }()
+    
+    private let articleTextStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 4
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
     }()
     
     private let titleLabel: UILabel = {
@@ -51,31 +59,38 @@ class ArticleCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupImageView()
+        setupStackView()
         
+        separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+
+    private func setupImageView() {
         addSubview(articleImageView)
-        addSubview(titleLabel)
-        addSubview(descriptionLabel)
         
-        articleImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        articleImageView.heightAnchor.constraint(equalToConstant: 72).isActive = true
-        articleImageView.widthAnchor.constraint(equalTo: articleImageView.heightAnchor).isActive = true
-        articleImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8).isActive = true
-        articleImageView.topAnchor.constraint(greaterThanOrEqualTo: safeAreaLayoutGuide.topAnchor, constant: 4).isActive = true
-        articleImageView.bottomAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.bottomAnchor, constant: -4).isActive = true
+        NSLayoutConstraint.activate([
+            articleImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            articleImageView.heightAnchor.constraint(equalToConstant: 72),
+            articleImageView.widthAnchor.constraint(equalTo: articleImageView.heightAnchor),
+            articleImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            articleImageView.topAnchor.constraint(greaterThanOrEqualTo: safeAreaLayoutGuide.topAnchor, constant: 4),
+            articleImageView.bottomAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.bottomAnchor, constant: -4)
+        ])
         
         articleImageView.layer.cornerRadius = 36
         articleImageView.clipsToBounds = true
-        
-        titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 4).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: articleImageView.trailingAnchor, constant: 8).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant:  -8).isActive = true
-        
-        descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4).isActive = true
-        descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
-        descriptionLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor).isActive = true
-        descriptionLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -8).isActive = true
-        
-        separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    private func setupStackView() {
+        addSubview(articleTextStackView)
+        NSLayoutConstraint.activate([
+            articleTextStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 4),
+            articleTextStackView.leadingAnchor.constraint(equalTo: articleImageView.trailingAnchor, constant: 8),
+            articleTextStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant:  -8),
+            articleTextStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -8)
+        ])
+        articleTextStackView.addArrangedSubview(titleLabel)
+        articleTextStackView.addArrangedSubview(descriptionLabel)
     }
     
     required init?(coder aDecoder: NSCoder) {

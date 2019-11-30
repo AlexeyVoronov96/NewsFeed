@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ABA557B323924AA600BD0123 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA557B223924AA600BD0123 /* FooterView.swift */; };
 		ABB357DD239012470065CBEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB357DC239012470065CBEA /* AppDelegate.swift */; };
 		ABB357DF239012470065CBEA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB357DE239012470065CBEA /* SceneDelegate.swift */; };
 		ABB357E7239012470065CBEA /* NewsFeed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ABB357E5239012470065CBEA /* NewsFeed.xcdatamodeld */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ABA557B223924AA600BD0123 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		ABB357D9239012470065CBEA /* NewsFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABB357DC239012470065CBEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABB357DE239012470065CBEA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				ABB357F5239016340065CBEA /* ArticleCell.swift */,
 				ABB357F3239016130065CBEA /* FeedViewController.swift */,
 				ABB3580A239026880065CBEA /* WebImageView.swift */,
+				ABA557B223924AA600BD0123 /* FooterView.swift */,
 			);
 			path = FeedViewController;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				ABB3581623902D900065CBEA /* ArticlesService.swift in Sources */,
 				ABB357F4239016130065CBEA /* FeedViewController.swift in Sources */,
 				ABB3581123902C700065CBEA /* ResponseStatus.swift in Sources */,
+				ABA557B323924AA600BD0123 /* FooterView.swift in Sources */,
 				ABB35802239020490065CBEA /* NetworkWorkerProtocol.swift in Sources */,
 				ABB35800239020380065CBEA /* NetworkWorker.swift in Sources */,
 				ABB3581323902CE30065CBEA /* Article.swift in Sources */,

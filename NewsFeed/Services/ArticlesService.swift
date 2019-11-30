@@ -18,31 +18,18 @@ class ArticlesService {
     
     private var totalResults: Int = 0
     
-    func getArticles(completion: @escaping (Error?) -> Void) {
-        networkWorker.getData(with: Feed.getArticles(page: 1), type: ArticlesResponse.self) { [weak self] (result) in
+    func getArticles(from page: Int, completion: @escaping (Error?) -> Void) {
+        networkWorker.getData(with: Feed.getArticles(page: page), type: ArticlesResponse.self) { [weak self] (result) in
             switch result {
             case let .success(articlesResponse):
-                do {
-                    try CoreDataManager.shared.clearData(in: .article)
-                } catch {
-                    completion(error)
+                if page == 1 {
+                    do {
+                        try CoreDataManager.shared.clearData(in: .article)
+                    } catch {
+                        completion(error)
+                    }
                 }
                 
-                self?.totalResults = articlesResponse.totalResults
-                
-                self?.save(articles: articlesResponse.articles)
-                completion(nil)
-                
-            case let .failure(error):
-                completion(error)
-            }
-        }
-    }
-    
-    func getMoreArticles(currentPage: Int, completion: @escaping (Error?) -> Void) {
-        networkWorker.getData(with: Feed.getArticles(page: currentPage), type: ArticlesResponse.self) { [weak self] (result) in
-            switch result {
-            case let .success(articlesResponse):
                 self?.totalResults = articlesResponse.totalResults
                 
                 self?.save(articles: articlesResponse.articles)
