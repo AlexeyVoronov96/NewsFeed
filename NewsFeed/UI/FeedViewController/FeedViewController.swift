@@ -11,16 +11,21 @@ import SafariServices
 import UIKit
 
 class FeedViewController: UIViewController {
-    private let articlesService = ArticlesService()
-    private let refreshControl = UIRefreshControl()
-    private let footerView = FooterView()
-
+    // MARK: - Nested Types
+    enum Constants {
+        static let estimatedRowHeight: CGFloat = 200
+    }
+    
+    // MARK: - Properties
+    private lazy var articlesService = ArticlesService()
+    
     private var currentPage: Int = 0
     private var isLoading: Bool = false
     private var didLoad: Bool = false
+    
 
     private var localArticles: [ArticleLocal] {
-        let request = NSFetchRequest<ArticleLocal>(entityName: "ArticleLocal")
+        let request = NSFetchRequest<ArticleLocal>(entityName: CoreDataManager.Entities.article.rawValue)
         let sortDescriptor = NSSortDescriptor(key: "publishedAt", ascending: false)
         request.sortDescriptors = [sortDescriptor]
         guard let array = try? CoreDataManager.shared.managedObjectContext.fetch(request) else {
@@ -29,27 +34,37 @@ class FeedViewController: UIViewController {
         return array
     }
     
-    private let tableView: UITableView = {
-        let tableView = UITableView(frame: .zero)
-        tableView.backgroundColor = UIColor.white
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        return tableView
-    }()
+    // MARK: - Subviews
+    private lazy var tableView = _tableView()
+    private lazy var refreshControl = UIRefreshControl()
+    private lazy var footerView = FooterView()
     
+    // MARK: - UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Feed"
-        
-        setupTableView()
-        
+        configureAppearance()
+        configureTableView()
         loadArticles()
     }
     
-    private func setupTableView() {
+    // MARK: - Actions
+    @objc private func refresh(_ sender: UIRefreshControl) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.loadArticles()
+        }
+    }
+    
+    // MARK: - Private methods
+    private func configureAppearance() {
+        title = "Feed"
+        view.backgroundColor = UIColor.white
+    }
+    
+    private func configureTableView() {
         view.addSubview(tableView)
         
-        tableView.register(ArticleCell.self, forCellReuseIdentifier: ArticleCell.cellId)
+        tableView.register(ArticleCell.self, forCellReuseIdentifier: ArticleCell.Constants.cellID)
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -61,17 +76,12 @@ class FeedViewController: UIViewController {
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 
-    @objc private func refresh(_ sender: UIRefreshControl) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.loadArticles()
-        }
-    }
 
-    func loadArticles() {
+    private func loadArticles() {
         footerView.startAnimating()
         isLoading = true
         articlesService.getArticles(from: 1) { [weak self] (error) in
@@ -92,7 +102,7 @@ class FeedViewController: UIViewController {
         }
     }
 
-    func loadMoreArticles() {
+    private func loadMoreArticles() {
         isLoading = true
         articlesService.getArticles(from: currentPage + 1) { [weak self] (error) in
             DispatchQueue.main.async {
@@ -109,15 +119,23 @@ class FeedViewController: UIViewController {
             }
         }
     }
+    
+    private func _tableView() -> UITableView {
+        let tableView = UITableView(frame: .zero)
+        tableView.backgroundColor = UIColor.white
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }
 }
 
+// MARK: UITableViewDataSource
 extension FeedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return localArticles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ArticleCell.cellId, for: indexPath) as? ArticleCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ArticleCell.Constants.cellID, for: indexPath) as? ArticleCell else {
             fatalError("Cell type should be ArticleCell")
         }
         cell.article = localArticles[indexPath.row]
@@ -125,6 +143,7 @@ extension FeedViewController: UITableViewDataSource {
     }
 }
 
+// MARK: UITableViewDelegate
 extension FeedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -140,8 +159,13 @@ extension FeedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Constants.estimatedRowHeight
+    }
 }
 
+// MARK: UIScrollViewDelegate
 extension FeedViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if isLoading || !didLoad { return }

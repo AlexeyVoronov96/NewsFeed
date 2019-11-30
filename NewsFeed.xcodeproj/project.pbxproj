@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AB752358239259340024EAF9 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB752357239259330024EAF9 /* APIError.swift */; };
 		AB75235A23925C850024EAF9 /* UIViewController+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB75235923925C850024EAF9 /* UIViewController+Errors.swift */; };
+		AB75235D23925F360024EAF9 /* ArticleLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB75235B23925F360024EAF9 /* ArticleLocal.swift */; };
 		ABA557B323924AA600BD0123 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA557B223924AA600BD0123 /* FooterView.swift */; };
 		ABB357DD239012470065CBEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB357DC239012470065CBEA /* AppDelegate.swift */; };
 		ABB357DF239012470065CBEA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB357DE239012470065CBEA /* SceneDelegate.swift */; };
@@ -28,14 +29,13 @@
 		ABB3581123902C700065CBEA /* ResponseStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB3581023902C700065CBEA /* ResponseStatus.swift */; };
 		ABB3581323902CE30065CBEA /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB3581223902CE30065CBEA /* Article.swift */; };
 		ABB3581623902D900065CBEA /* ArticlesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB3581523902D900065CBEA /* ArticlesService.swift */; };
-		ABB3581923902F5F0065CBEA /* ArticleLocal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB3581723902F5F0065CBEA /* ArticleLocal+CoreDataClass.swift */; };
-		ABB3581A23902F5F0065CBEA /* ArticleLocal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB3581823902F5F0065CBEA /* ArticleLocal+CoreDataProperties.swift */; };
 		ABB3581C23902F6B0065CBEA /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB3581B23902F6B0065CBEA /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AB752357239259330024EAF9 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		AB75235923925C850024EAF9 /* UIViewController+Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Errors.swift"; sourceTree = "<group>"; };
+		AB75235B23925F360024EAF9 /* ArticleLocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleLocal.swift; sourceTree = "<group>"; };
 		ABA557B223924AA600BD0123 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		ABB357D9239012470065CBEA /* NewsFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABB357DC239012470065CBEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,8 +57,6 @@
 		ABB3581023902C700065CBEA /* ResponseStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseStatus.swift; sourceTree = "<group>"; };
 		ABB3581223902CE30065CBEA /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		ABB3581523902D900065CBEA /* ArticlesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesService.swift; sourceTree = "<group>"; };
-		ABB3581723902F5F0065CBEA /* ArticleLocal+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleLocal+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		ABB3581823902F5F0065CBEA /* ArticleLocal+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleLocal+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		ABB3581B23902F6B0065CBEA /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +71,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB75235F239312C10024EAF9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				ABB357F5239016340065CBEA /* ArticleCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		AB752360239312CD0024EAF9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ABB3580A239026880065CBEA /* WebImageView.swift */,
+				ABA557B223924AA600BD0123 /* FooterView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		ABA557B42392586900BD0123 /* Errors */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,10 +142,9 @@
 		ABB357F823901F400065CBEA /* FeedViewController */ = {
 			isa = PBXGroup;
 			children = (
-				ABB357F5239016340065CBEA /* ArticleCell.swift */,
+				AB752360239312CD0024EAF9 /* Views */,
+				AB75235F239312C10024EAF9 /* Cell */,
 				ABB357F3239016130065CBEA /* FeedViewController.swift */,
-				ABB3580A239026880065CBEA /* WebImageView.swift */,
-				ABA557B223924AA600BD0123 /* FooterView.swift */,
 			);
 			path = FeedViewController;
 			sourceTree = "<group>";
@@ -149,8 +163,8 @@
 			children = (
 				ABA557B42392586900BD0123 /* Errors */,
 				ABB35803239020A20065CBEA /* Endpoints */,
-				ABB357FF239020380065CBEA /* NetworkWorker.swift */,
 				ABB35801239020490065CBEA /* NetworkWorkerProtocol.swift */,
+				ABB357FF239020380065CBEA /* NetworkWorker.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -158,9 +172,8 @@
 		ABB357FD23901FBA0065CBEA /* LocalMemory */ = {
 			isa = PBXGroup;
 			children = (
-				ABB3581723902F5F0065CBEA /* ArticleLocal+CoreDataClass.swift */,
-				ABB3581823902F5F0065CBEA /* ArticleLocal+CoreDataProperties.swift */,
 				ABB3581B23902F6B0065CBEA /* CoreDataManager.swift */,
+				AB75235B23925F360024EAF9 /* ArticleLocal.swift */,
 			);
 			path = LocalMemory;
 			sourceTree = "<group>";
@@ -263,14 +276,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABB3581A23902F5F0065CBEA /* ArticleLocal+CoreDataProperties.swift in Sources */,
 				ABB357FB23901F660065CBEA /* Settings.swift in Sources */,
 				ABB3580B239026880065CBEA /* WebImageView.swift in Sources */,
 				ABB35807239020D00065CBEA /* Feed.swift in Sources */,
+				AB75235D23925F360024EAF9 /* ArticleLocal.swift in Sources */,
 				ABB357DD239012470065CBEA /* AppDelegate.swift in Sources */,
 				ABB35809239022940065CBEA /* NetworkWorkerErrors.swift in Sources */,
 				ABB357E7239012470065CBEA /* NewsFeed.xcdatamodeld in Sources */,
-				ABB3581923902F5F0065CBEA /* ArticleLocal+CoreDataClass.swift in Sources */,
 				ABB35805239020C50065CBEA /* EndpointProtocol.swift in Sources */,
 				ABB3580F23902C540065CBEA /* ArticlesResponse.swift in Sources */,
 				ABB3581623902D900065CBEA /* ArticlesService.swift in Sources */,

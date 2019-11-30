@@ -21,7 +21,7 @@ enum NetworkWorkerErrors: LocalizedError {
             return error
             
         default:
-            return "Something goes wrong..."
+            return "Something went wrong..."
         }
     }
 }

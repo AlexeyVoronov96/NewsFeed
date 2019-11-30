@@ -10,14 +10,15 @@ import CoreData
 import Foundation
 
 class ArticlesService {
+    // MARK: - Properties
     private let networkWorker: NetworkWorkerProtocol
     
+    // MARK: - Initializer
     init(networkWorker: NetworkWorkerProtocol = NetworkWorker()) {
         self.networkWorker = networkWorker
     }
     
-    private var totalResults: Int = 0
-    
+    // MARK: - Methods
     func getArticles(from page: Int, completion: @escaping (Error?) -> Void) {
         networkWorker.getData(with: Feed.getArticles(page: page), type: ArticlesResponse.self) { [weak self] (result) in
             switch result {
@@ -30,8 +31,6 @@ class ArticlesService {
                     }
                 }
                 
-                self?.totalResults = articlesResponse.totalResults
-                
                 self?.save(articles: articlesResponse.articles)
                 completion(nil)
                 
@@ -41,6 +40,7 @@ class ArticlesService {
         }
     }
     
+    // MARK: - Private methods
     private func save(articles: Articles) {
         for article in articles where filter(by: article.title, description: article.description) {
             ArticleLocal.saveArticle(article)

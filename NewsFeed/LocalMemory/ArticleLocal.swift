@@ -7,12 +7,19 @@
 //
 //
 
-import Foundation
 import CoreData
+import Foundation
 
-@objc(ArticleLocal)
 public class ArticleLocal: NSManagedObject {
-    class func saveArticle(_ article: Article) {
+    // MARK: - Properties
+    @NSManaged public var title: String?
+    @NSManaged public var subTitle: String?
+    @NSManaged public var imageLink: String?
+    @NSManaged public var articleLink: String?
+    @NSManaged public var publishedAt: Date?
+    
+    // MARK: - Methods
+    static func saveArticle(_ article: Article) {
         let localArticle = ArticleLocal(context: CoreDataManager.shared.managedObjectContext)
         
         localArticle.title = article.title

@@ -10,10 +10,12 @@ import CoreData
 import Foundation
 
 class CoreDataManager {
+    // MARK: - Nested types
     enum Entities: String {
         case article = "ArticleLocal"
     }
     
+    // MARK: - Properties
     static let shared = CoreDataManager()
     
     var managedObjectContext: NSManagedObjectContext {
@@ -30,6 +32,7 @@ class CoreDataManager {
         return container
     }()
     
+    // MARK: - Methods
     func clearData(in entity: Entities) throws {
         let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: entity.rawValue)
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
@@ -47,4 +50,3 @@ class CoreDataManager {
         }
     }
 }
-

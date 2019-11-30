@@ -12,12 +12,15 @@ class NetworkWorker: NetworkWorkerProtocol {
     private let jsonDecoder: JSONDecoder
     private let session: URLSession
 
+    // MARK: - Initializer
     init(jsonDecoder: JSONDecoder = JSONDecoder(),
          session: URLSession = URLSession.shared) {
+        jsonDecoder.dateDecodingStrategy = .iso8601
         self.jsonDecoder = jsonDecoder
         self.session = session
     }
 
+    // MARK: - Methods
     func getData<T: Decodable>(with endpoint: EndpointProtocol, type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
         guard let request = performRequest(with: endpoint) else {
             completion(Result.failure(NetworkWorkerErrors.wrongRequest))
@@ -27,6 +30,7 @@ class NetworkWorker: NetworkWorkerProtocol {
         loadData(with: request, type: type, completion: completion)
     }
 
+    // MARK: - Private methods
     private func performRequest(with endpoint: EndpointProtocol) -> URLRequest? {
         var components = URLComponents()
 
@@ -57,9 +61,6 @@ class NetworkWorker: NetworkWorkerProtocol {
             }
 
             if let error = error {
-                if let apiError = self?.parse(data, with: APIError.self) {
-                    completion(Result.failure(NetworkWorkerErrors.apiError(error: apiError.message)))
-                }
                 completion(Result.failure(error))
                 return
             }
@@ -82,12 +83,6 @@ class NetworkWorker: NetworkWorkerProtocol {
     }
     
     private func parse<T: Decodable>(_ data: Data, with type: T.Type) -> T? {
-        do {
-            jsonDecoder.dateDecodingStrategy = .iso8601
-            return try jsonDecoder.decode(type, from: data)
-        } catch {
-            print(error)
-            return nil
-        }
+        return try? jsonDecoder.decode(type, from: data)
     }
 }
