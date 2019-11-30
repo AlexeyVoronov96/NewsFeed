@@ -13,4 +13,15 @@ enum NetworkWorkerErrors: LocalizedError {
     case wrongResponse
     case dataNil
     case fetchingError
+    case apiError(error: String)
+    
+    var errorDescription: String? {
+        switch self {
+        case let .apiError(error):
+            return error
+            
+        default:
+            return "Something goes wrong..."
+        }
+    }
 }

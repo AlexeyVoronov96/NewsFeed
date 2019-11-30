@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB752358239259340024EAF9 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB752357239259330024EAF9 /* APIError.swift */; };
+		AB75235A23925C850024EAF9 /* UIViewController+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB75235923925C850024EAF9 /* UIViewController+Errors.swift */; };
 		ABA557B323924AA600BD0123 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA557B223924AA600BD0123 /* FooterView.swift */; };
 		ABB357DD239012470065CBEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB357DC239012470065CBEA /* AppDelegate.swift */; };
 		ABB357DF239012470065CBEA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB357DE239012470065CBEA /* SceneDelegate.swift */; };
@@ -32,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB752357239259330024EAF9 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		AB75235923925C850024EAF9 /* UIViewController+Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Errors.swift"; sourceTree = "<group>"; };
 		ABA557B223924AA600BD0123 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		ABB357D9239012470065CBEA /* NewsFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABB357DC239012470065CBEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +73,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ABA557B42392586900BD0123 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				ABB35808239022940065CBEA /* NetworkWorkerErrors.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
 		ABB357D0239012470065CBEA = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				ABB357FA23901F660065CBEA /* Settings.swift */,
+				AB75235923925C850024EAF9 /* UIViewController+Errors.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -134,10 +147,10 @@
 		ABB357FC23901FB00065CBEA /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				ABA557B42392586900BD0123 /* Errors */,
 				ABB35803239020A20065CBEA /* Endpoints */,
 				ABB357FF239020380065CBEA /* NetworkWorker.swift */,
 				ABB35801239020490065CBEA /* NetworkWorkerProtocol.swift */,
-				ABB35808239022940065CBEA /* NetworkWorkerErrors.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -158,6 +171,7 @@
 				ABB3580E23902C540065CBEA /* ArticlesResponse.swift */,
 				ABB3581023902C700065CBEA /* ResponseStatus.swift */,
 				ABB3581223902CE30065CBEA /* Article.swift */,
+				AB752357239259330024EAF9 /* APIError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -268,7 +282,9 @@
 				ABB3581323902CE30065CBEA /* Article.swift in Sources */,
 				ABB357F6239016340065CBEA /* ArticleCell.swift in Sources */,
 				ABB3581C23902F6B0065CBEA /* CoreDataManager.swift in Sources */,
+				AB75235A23925C850024EAF9 /* UIViewController+Errors.swift in Sources */,
 				ABB357DF239012470065CBEA /* SceneDelegate.swift in Sources */,
+				AB752358239259340024EAF9 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

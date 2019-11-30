@@ -51,22 +51,33 @@ class NetworkWorker: NetworkWorkerProtocol {
     
     private func loadData<T: Decodable>(with request: URLRequest, type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
         session.dataTask(with: request) { [weak self] (data, response, error) in
-            if let error = error {
-                completion(Result.failure(error))
-                return
-            }
-            
             guard let data = data else {
                 completion(Result.failure(NetworkWorkerErrors.dataNil))
                 return
             }
-            
-            guard let parsedData = self?.parse(data, with: type) else {
-                completion(Result.failure(NetworkWorkerErrors.fetchingError))
+
+            if let error = error {
+                if let apiError = self?.parse(data, with: APIError.self) {
+                    completion(Result.failure(NetworkWorkerErrors.apiError(error: apiError.message)))
+                }
+                completion(Result.failure(error))
                 return
             }
             
-            completion(Result.success(parsedData))
+            if let httpResponse = response as? HTTPURLResponse,
+                (200..<300).contains(httpResponse.statusCode) {
+                guard let parsedData = self?.parse(data, with: type) else {
+                    completion(Result.failure(NetworkWorkerErrors.fetchingError))
+                    return
+                }
+                completion(Result.success(parsedData))
+            } else {
+                guard let apiError = self?.parse(data, with: APIError.self) else {
+                    completion(Result.failure(NetworkWorkerErrors.wrongResponse))
+                    return
+                }
+                completion(Result.failure(NetworkWorkerErrors.apiError(error: apiError.message)))
+            }
         }.resume()
     }
     

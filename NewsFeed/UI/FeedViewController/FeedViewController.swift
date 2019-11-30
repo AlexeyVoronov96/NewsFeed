@@ -80,7 +80,8 @@ class FeedViewController: UIViewController {
                 self?.footerView.stopAnimating()
                 self?.refreshControl.endRefreshing()
             }
-            guard error == nil else {
+            if let error = error {
+                self?.showError(error)
                 return
             }
             if !(self?.didLoad ?? false) { self?.didLoad.toggle() }
@@ -98,7 +99,8 @@ class FeedViewController: UIViewController {
                 self?.footerView.stopAnimating()
             }
             self?.isLoading = false
-            guard error == nil else {
+            if let error = error {
+                self?.showError(error)
                 return
             }
             self?.currentPage += 1
