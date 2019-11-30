@@ -10,9 +10,12 @@ import Foundation
 
 class NetworkWorker: NetworkWorkerProtocol {
     private let jsonDecoder: JSONDecoder
+    private let session: URLSession
 
-    init(jsonDecoder: JSONDecoder = JSONDecoder()) {
+    init(jsonDecoder: JSONDecoder = JSONDecoder(),
+         session: URLSession = URLSession.shared) {
         self.jsonDecoder = jsonDecoder
+        self.session = session
     }
 
     func getData<T: Decodable>(with endpoint: EndpointProtocol, type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
@@ -47,7 +50,7 @@ class NetworkWorker: NetworkWorkerProtocol {
     }
     
     private func loadData<T: Decodable>(with request: URLRequest, type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
-        URLSession.shared.dataTask(with: request) { [weak self] (data, _, error) in
+        session.dataTask(with: request) { [weak self] (data, response, error) in
             if let error = error {
                 completion(Result.failure(error))
                 return
@@ -68,6 +71,12 @@ class NetworkWorker: NetworkWorkerProtocol {
     }
     
     private func parse<T: Decodable>(_ data: Data, with type: T.Type) -> T? {
-        return try? jsonDecoder.decode(type, from: data)
+        do {
+            jsonDecoder.dateDecodingStrategy = .iso8601
+            return try jsonDecoder.decode(type, from: data)
+        } catch {
+            print(error)
+            return nil
+        }
     }
 }

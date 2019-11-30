@@ -9,4 +9,5 @@
 import Foundation
 
 protocol NetworkWorkerProtocol {
+    func getData<T: Decodable>(with endpoint: EndpointProtocol, type: T.Type, completion: @escaping (Result<T, Error>) -> Void)
 }

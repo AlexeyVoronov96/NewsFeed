@@ -1,5 +1,5 @@
 //
-//  Settings.swift
+//  ArticlesResponse.swift
 //  NewsFeed
 //
 //  Created by Алексей Воронов on 28.11.2019.
@@ -8,6 +8,9 @@
 
 import Foundation
 
-class Settings {
-    static let apiKey = "a32e39517ac94ab0bc30c1f0c6da7511"
+struct ArticlesResponse: Decodable {
+    let status: ResponseStatus
+    let totalResults: Int
+
+    let articles: Articles
 }

@@ -12,18 +12,26 @@ enum Feed: EndpointProtocol {
     case getArticles(page: Int)
 
     var host: String {
-        return ""
+        return "newsapi.org"
     }
     
     var path: String {
-        return ""
+        return "/v2/everything"
     }
     
     var params: [String : String] {
-        return ["": ""]
+        switch self {
+        case let .getArticles(page):
+            return [
+                "page": "\(page)",
+                "q": "Apple",
+                "sortBy": "publishedAt",
+                "language": "en"
+            ]
+        }
     }
     
     var headers: [String : String] {
-        return ["": ""]
+        return ["X-Api-Key": Settings.apiKey]
     }
 }

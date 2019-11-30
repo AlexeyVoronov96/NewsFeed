@@ -20,6 +20,14 @@
 		ABB35805239020C50065CBEA /* EndpointProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB35804239020C50065CBEA /* EndpointProtocol.swift */; };
 		ABB35807239020D00065CBEA /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB35806239020D00065CBEA /* Feed.swift */; };
 		ABB35809239022940065CBEA /* NetworkWorkerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB35808239022940065CBEA /* NetworkWorkerErrors.swift */; };
+		ABB3580B239026880065CBEA /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB3580A239026880065CBEA /* WebImageView.swift */; };
+		ABB3580F23902C540065CBEA /* ArticlesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB3580E23902C540065CBEA /* ArticlesResponse.swift */; };
+		ABB3581123902C700065CBEA /* ResponseStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB3581023902C700065CBEA /* ResponseStatus.swift */; };
+		ABB3581323902CE30065CBEA /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB3581223902CE30065CBEA /* Article.swift */; };
+		ABB3581623902D900065CBEA /* ArticlesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB3581523902D900065CBEA /* ArticlesService.swift */; };
+		ABB3581923902F5F0065CBEA /* ArticleLocal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB3581723902F5F0065CBEA /* ArticleLocal+CoreDataClass.swift */; };
+		ABB3581A23902F5F0065CBEA /* ArticleLocal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB3581823902F5F0065CBEA /* ArticleLocal+CoreDataProperties.swift */; };
+		ABB3581C23902F6B0065CBEA /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB3581B23902F6B0065CBEA /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +46,14 @@
 		ABB35804239020C50065CBEA /* EndpointProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointProtocol.swift; sourceTree = "<group>"; };
 		ABB35806239020D00065CBEA /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		ABB35808239022940065CBEA /* NetworkWorkerErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkWorkerErrors.swift; sourceTree = "<group>"; };
+		ABB3580A239026880065CBEA /* WebImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageView.swift; sourceTree = "<group>"; };
+		ABB3580E23902C540065CBEA /* ArticlesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesResponse.swift; sourceTree = "<group>"; };
+		ABB3581023902C700065CBEA /* ResponseStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseStatus.swift; sourceTree = "<group>"; };
+		ABB3581223902CE30065CBEA /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		ABB3581523902D900065CBEA /* ArticlesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesService.swift; sourceTree = "<group>"; };
+		ABB3581723902F5F0065CBEA /* ArticleLocal+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleLocal+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		ABB3581823902F5F0065CBEA /* ArticleLocal+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleLocal+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		ABB3581B23902F6B0065CBEA /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +89,7 @@
 				ABB357FC23901FB00065CBEA /* Network */,
 				ABB357FD23901FBA0065CBEA /* LocalMemory */,
 				ABB357FE23901FCF0065CBEA /* Models */,
+				ABB3581423902D7C0065CBEA /* Services */,
 				ABB357F923901F530065CBEA /* Tools */,
 				ABB357F723901F350065CBEA /* UI */,
 				ABB357DC239012470065CBEA /* AppDelegate.swift */,
@@ -98,6 +115,7 @@
 			children = (
 				ABB357F5239016340065CBEA /* ArticleCell.swift */,
 				ABB357F3239016130065CBEA /* FeedViewController.swift */,
+				ABB3580A239026880065CBEA /* WebImageView.swift */,
 			);
 			path = FeedViewController;
 			sourceTree = "<group>";
@@ -124,6 +142,9 @@
 		ABB357FD23901FBA0065CBEA /* LocalMemory */ = {
 			isa = PBXGroup;
 			children = (
+				ABB3581723902F5F0065CBEA /* ArticleLocal+CoreDataClass.swift */,
+				ABB3581823902F5F0065CBEA /* ArticleLocal+CoreDataProperties.swift */,
+				ABB3581B23902F6B0065CBEA /* CoreDataManager.swift */,
 			);
 			path = LocalMemory;
 			sourceTree = "<group>";
@@ -131,6 +152,9 @@
 		ABB357FE23901FCF0065CBEA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				ABB3580E23902C540065CBEA /* ArticlesResponse.swift */,
+				ABB3581023902C700065CBEA /* ResponseStatus.swift */,
+				ABB3581223902CE30065CBEA /* Article.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -142,6 +166,14 @@
 				ABB35806239020D00065CBEA /* Feed.swift */,
 			);
 			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		ABB3581423902D7C0065CBEA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				ABB3581523902D900065CBEA /* ArticlesService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,16 +246,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABB3581A23902F5F0065CBEA /* ArticleLocal+CoreDataProperties.swift in Sources */,
 				ABB357FB23901F660065CBEA /* Settings.swift in Sources */,
+				ABB3580B239026880065CBEA /* WebImageView.swift in Sources */,
 				ABB35807239020D00065CBEA /* Feed.swift in Sources */,
 				ABB357DD239012470065CBEA /* AppDelegate.swift in Sources */,
 				ABB35809239022940065CBEA /* NetworkWorkerErrors.swift in Sources */,
 				ABB357E7239012470065CBEA /* NewsFeed.xcdatamodeld in Sources */,
+				ABB3581923902F5F0065CBEA /* ArticleLocal+CoreDataClass.swift in Sources */,
 				ABB35805239020C50065CBEA /* EndpointProtocol.swift in Sources */,
+				ABB3580F23902C540065CBEA /* ArticlesResponse.swift in Sources */,
+				ABB3581623902D900065CBEA /* ArticlesService.swift in Sources */,
 				ABB357F4239016130065CBEA /* FeedViewController.swift in Sources */,
+				ABB3581123902C700065CBEA /* ResponseStatus.swift in Sources */,
 				ABB35802239020490065CBEA /* NetworkWorkerProtocol.swift in Sources */,
 				ABB35800239020380065CBEA /* NetworkWorker.swift in Sources */,
+				ABB3581323902CE30065CBEA /* Article.swift in Sources */,
 				ABB357F6239016340065CBEA /* ArticleCell.swift in Sources */,
+				ABB3581C23902F6B0065CBEA /* CoreDataManager.swift in Sources */,
 				ABB357DF239012470065CBEA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,5 +1,5 @@
 //
-//  Settings.swift
+//  ResponseStatus.swift
 //  NewsFeed
 //
 //  Created by Алексей Воронов on 28.11.2019.
@@ -8,6 +8,7 @@
 
 import Foundation
 
-class Settings {
-    static let apiKey = "a32e39517ac94ab0bc30c1f0c6da7511"
+enum ResponseStatus: String, Decodable {
+    case ok
+    case error
 }
