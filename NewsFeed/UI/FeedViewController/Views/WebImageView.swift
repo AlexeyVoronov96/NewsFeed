@@ -52,7 +52,7 @@ class WebImageView: UIImageView {
 
         activityIndicator.startAnimating()
 
-        DispatchQueue.global(qos: .background).async {
+        DispatchQueue.global(qos: .utility).async {
             self.loadAndSetImage(from: link)
         }
     }
