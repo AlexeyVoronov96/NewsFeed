@@ -10,7 +10,6 @@ import CoreData
 import Foundation
 
 class ArticlesService {
-    // MARK: - Properties
     private let networkWorker: NetworkWorkerProtocol
     
     // MARK: - Initializer
